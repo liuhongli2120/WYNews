@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WYHomeViewController.h
 //  小浣熊新闻
 //
 //  Created by 刘宏立 on 16/7/25.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WYHomeViewController : UIViewController
 
 @end
-
