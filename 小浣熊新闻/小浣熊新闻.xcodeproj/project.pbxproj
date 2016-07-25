@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		549A0D1C5BF83A7399B2198C /* libPods-小浣熊新闻.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A976569D3EE031613F8A67AB /* libPods-小浣熊新闻.a */; };
 		F21598971D4665AD00FDFFCC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21598961D4665AD00FDFFCC /* main.m */; };
 		F215989A1D4665AD00FDFFCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21598991D4665AD00FDFFCC /* AppDelegate.m */; };
 		F215989D1D4665AD00FDFFCC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F215989C1D4665AD00FDFFCC /* ViewController.m */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007179EEA813B921877D6B02 /* Pods-小浣熊新闻.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-小浣熊新闻.release.xcconfig"; path = "Pods/Target Support Files/Pods-小浣熊新闻/Pods-小浣熊新闻.release.xcconfig"; sourceTree = "<group>"; };
+		5CB377059F553494B6434E7F /* Pods-小浣熊新闻.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-小浣熊新闻.debug.xcconfig"; path = "Pods/Target Support Files/Pods-小浣熊新闻/Pods-小浣熊新闻.debug.xcconfig"; sourceTree = "<group>"; };
+		A976569D3EE031613F8A67AB /* libPods-小浣熊新闻.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-小浣熊新闻.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21598921D4665AC00FDFFCC /* 小浣熊新闻.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "小浣熊新闻.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21598961D4665AD00FDFFCC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F21598981D4665AD00FDFFCC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549A0D1C5BF83A7399B2198C /* libPods-小浣熊新闻.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AFA037DBC3AE3C1FDF54020 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CB377059F553494B6434E7F /* Pods-小浣熊新闻.debug.xcconfig */,
+				007179EEA813B921877D6B02 /* Pods-小浣熊新闻.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F21598891D4665AC00FDFFCC = {
 			isa = PBXGroup;
 			children = (
 				F21598941D4665AD00FDFFCC /* 小浣熊新闻 */,
 				F21598931D4665AC00FDFFCC /* Products */,
+				4AFA037DBC3AE3C1FDF54020 /* Pods */,
+				FD487D99115EF3D8EA29948F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +95,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FD487D99115EF3D8EA29948F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A976569D3EE031613F8A67AB /* libPods-小浣熊新闻.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F21598A91D4665AD00FDFFCC /* Build configuration list for PBXNativeTarget "小浣熊新闻" */;
 			buildPhases = (
+				297DEA80D680C1C113BD4398 /* [CP] Check Pods Manifest.lock */,
 				F215988E1D4665AC00FDFFCC /* Sources */,
 				F215988F1D4665AC00FDFFCC /* Frameworks */,
 				F21598901D4665AC00FDFFCC /* Resources */,
+				030379A843F51B95F7B7123E /* [CP] Embed Pods Frameworks */,
+				5605235098B12738D54FD3EF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		030379A843F51B95F7B7123E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-小浣熊新闻/Pods-小浣熊新闻-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		297DEA80D680C1C113BD4398 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5605235098B12738D54FD3EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-小浣熊新闻/Pods-小浣熊新闻-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F215988E1D4665AC00FDFFCC /* Sources */ = {
@@ -264,6 +339,7 @@
 		};
 		F21598AA1D4665AD00FDFFCC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CB377059F553494B6434E7F /* Pods-小浣熊新闻.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -279,6 +355,7 @@
 		};
 		F21598AB1D4665AD00FDFFCC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 007179EEA813B921877D6B02 /* Pods-小浣熊新闻.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -311,6 +388,7 @@
 				F21598AB1D4665AD00FDFFCC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
