@@ -1,0 +1,15 @@
+//
+//  WYPrefix.pch
+//  小浣熊新闻
+//
+//  Created by 刘宏立 on 16/7/26.
+//  Copyright © 2016年 lhl. All rights reserved.
+//
+
+#if __OBJC__
+
+#import <Masonry.h>
+#import <NSObject+YYModel.h>
+#import "CZAdditions.h"
+
+#endif
