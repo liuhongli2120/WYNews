@@ -16,22 +16,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addChildControllers];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)addChildControllers {
+    
+    NSArray *array = @[
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_news_normal"},
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"}
+                       ];
+    
+    NSMutableArray *arrayM = [[NSMutableArray alloc]init];
+    for (NSDictionary *dict in array) {
+        [arrayM addObject:[self childControllerWithDict:dict]];
+    }
+    
+    self.viewControllers = arrayM.copy;
+    
+
 }
 
-/*
-#pragma mark - Navigation
+- (UIViewController *)childControllerWithDict:(NSDictionary *)dict{
+    
+    NSString *clsName = dict[@"clsName"];
+    Class cls = NSClassFromString(clsName);
+    
+    NSAssert(cls != nil, @"传入的类名错误");
+    UIViewController *vc = [[cls alloc]init];
+    
+    vc.title = dict[@"title"];
+    
+    NSString *imageName = dict[@"imageName"];
+    vc.tabBarItem.image = [UIImage imageNamed:imageName];
+    
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    return nav;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end
