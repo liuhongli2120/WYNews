@@ -7,12 +7,16 @@
 //
 
 #import "WYNewsListViewController.h"
+#import "WYNewsListItem.h"
+
 
 static NSString *cellId = @"cellId";
 
 @interface WYNewsListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic,weak)UITableView *tableView;
+
+@property(nonatomic,strong)NSMutableArray <WYNewsListItem *> *newsList;
 
 @end
 
@@ -26,13 +30,13 @@ static NSString *cellId = @"cellId";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return _newsList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    cell.textLabel.text = @(indexPath.row).description;
+    cell.textLabel.text = _newsList[indexPath.row].title;
     
     return cell;
 }
@@ -41,6 +45,13 @@ static NSString *cellId = @"cellId";
 - (void)loadData {
     [[HLNetworkManager sharedManager] newsListWithChannel:@"T1348648517839" start:0 completion:^(NSArray *array, NSError *error) {
         NSLog(@"%@",array);
+        //字典转模型
+        NSArray *list = [NSArray yy_modelArrayWithClass:[WYNewsListItem class] json:array];
+        
+        self.newsList = [NSMutableArray arrayWithArray:list];
+        
+        [self.tableView reloadData];
+        
     }];
 }
 

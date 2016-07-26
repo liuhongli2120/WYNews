@@ -28,6 +28,7 @@
 		F21598A51D4665AD00FDFFCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21598A31D4665AD00FDFFCC /* LaunchScreen.storyboard */; };
 		F2B64B351D470AA100184380 /* WYNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64B341D470AA100184380 /* WYNewsListViewController.m */; };
 		F2E807801D472DF200AC7752 /* HLNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */; };
+		F2E807A71D47838400AC7752 /* WYNewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E807A61D47838400AC7752 /* WYNewsListItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		F2B64B341D470AA100184380 /* WYNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsListViewController.m; sourceTree = "<group>"; };
 		F2E8077E1D472DF200AC7752 /* HLNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLNetworkManager.h; sourceTree = "<group>"; };
 		F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLNetworkManager.m; sourceTree = "<group>"; };
+		F2E807A51D47838400AC7752 /* WYNewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsListItem.h; sourceTree = "<group>"; };
+		F2E807A61D47838400AC7752 /* WYNewsListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsListItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +218,7 @@
 		F2B64B0E1D46FBF200184380 /* NewsList(新闻列表) */ = {
 			isa = PBXGroup;
 			children = (
+				F2E807A41D47834200AC7752 /* Model */,
 				F2B64B331D470AA100184380 /* WYNewsListViewController.h */,
 				F2B64B341D470AA100184380 /* WYNewsListViewController.m */,
 			);
@@ -237,6 +241,15 @@
 				F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F2E807A41D47834200AC7752 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2E807A51D47838400AC7752 /* WYNewsListItem.h */,
+				F2E807A61D47838400AC7752 /* WYNewsListItem.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FD487D99115EF3D8EA29948F /* Frameworks */ = {
@@ -377,6 +390,7 @@
 				F20881451D4669E600B351D6 /* UIButton+CZAddition.m in Sources */,
 				F20881491D4669E600B351D6 /* UIView+CZAddition.m in Sources */,
 				F20881431D4669E600B351D6 /* NSString+CZHash.m in Sources */,
+				F2E807A71D47838400AC7752 /* WYNewsListItem.m in Sources */,
 				F20881471D4669E600B351D6 /* UILabel+CZAddition.m in Sources */,
 				F20881531D466A5C00B351D6 /* WYHomeViewController.m in Sources */,
 				F2B64B351D470AA100184380 /* WYNewsListViewController.m in Sources */,
