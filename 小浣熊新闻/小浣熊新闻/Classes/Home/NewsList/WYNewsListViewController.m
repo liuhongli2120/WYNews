@@ -8,7 +8,11 @@
 
 #import "WYNewsListViewController.h"
 
-@interface WYNewsListViewController ()
+static NSString *cellId = @"cellId";
+
+@interface WYNewsListViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic,weak)UITableView *tableView;
 
 @end
 
@@ -16,9 +20,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setupUI];
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 30;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    
+    cell.textLabel.text = @(indexPath.row).description;
+    
+    return cell;
+}
+
+
+
+#pragma mark - 设置界面
+- (void)setupUI {
+    UITableView *tv = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self.view addSubview:tv];
+    
+    [tv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [tv registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
+    
+    tv.dataSource = self;
+    tv.delegate = self;
+    
+    _tableView = tv;
+    
+    
+}
 
 
 
