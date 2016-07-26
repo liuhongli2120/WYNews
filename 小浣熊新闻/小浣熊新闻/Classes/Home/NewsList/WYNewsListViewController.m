@@ -28,18 +28,17 @@ static NSString *cellId = @"cellId";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     cell.textLabel.text = @(indexPath.row).description;
     
     return cell;
 }
 
-
-
 #pragma mark - 设置界面
 - (void)setupUI {
     UITableView *tv = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
+    
     [self.view addSubview:tv];
     
     [tv mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -52,7 +51,6 @@ static NSString *cellId = @"cellId";
     tv.delegate = self;
     
     _tableView = tv;
-    
     
 }
 
