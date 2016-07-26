@@ -27,6 +27,7 @@
 		F21598A21D4665AD00FDFFCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21598A11D4665AD00FDFFCC /* Assets.xcassets */; };
 		F21598A51D4665AD00FDFFCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21598A31D4665AD00FDFFCC /* LaunchScreen.storyboard */; };
 		F2B64B351D470AA100184380 /* WYNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64B341D470AA100184380 /* WYNewsListViewController.m */; };
+		F2E807801D472DF200AC7752 /* HLNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		F21598A61D4665AD00FDFFCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2B64B331D470AA100184380 /* WYNewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsListViewController.h; sourceTree = "<group>"; };
 		F2B64B341D470AA100184380 /* WYNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsListViewController.m; sourceTree = "<group>"; };
+		F2E8077E1D472DF200AC7752 /* HLNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLNetworkManager.h; sourceTree = "<group>"; };
+		F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLNetworkManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 		F20881241D4669E600B351D6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F2E8077D1D472DC800AC7752 /* Network */,
 				F20881251D4669E600B351D6 /* Additions */,
 			);
 			path = Tools;
@@ -224,6 +228,15 @@
 			);
 			name = "NewsDetail(新闻详情)";
 			path = NewsDetail;
+			sourceTree = "<group>";
+		};
+		F2E8077D1D472DC800AC7752 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F2E8077E1D472DF200AC7752 /* HLNetworkManager.h */,
+				F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FD487D99115EF3D8EA29948F /* Frameworks */ = {
@@ -368,6 +381,7 @@
 				F20881531D466A5C00B351D6 /* WYHomeViewController.m in Sources */,
 				F2B64B351D470AA100184380 /* WYNewsListViewController.m in Sources */,
 				F20881501D466A3F00B351D6 /* WYMainViewController.m in Sources */,
+				F2E807801D472DF200AC7752 /* HLNetworkManager.m in Sources */,
 				F20881421D4669E600B351D6 /* NSString+CZBase64.m in Sources */,
 				F20881411D4669E600B351D6 /* NSObject+CZRuntime.m in Sources */,
 				F208814A1D4669E600B351D6 /* UIViewController+CZAddition.m in Sources */,
