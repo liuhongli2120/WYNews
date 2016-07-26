@@ -21,10 +21,10 @@
 
 - (void)addChildControllers {
     
-    self.tabBar.tintColor = [UIColor cz_colorWithHex:0xDF0000];
+//    self.tabBar.tintColor = [UIColor cz_colorWithHex:0xDF0000];
     
     NSArray *array = @[
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"news"},
+                       @{@"clsName": @"WYHomeViewController", @"title": @"首页", @"imageName": @"news"},
                        @{@"clsName": @"UIViewController", @"title": @"熊大", @"imageName": @"bar"},
                        @{@"clsName": @"UIViewController", @"title": @"熊二", @"imageName": @"found"},
                        @{@"clsName": @"UIViewController", @"title": @"熊三", @"imageName": @"me"},
