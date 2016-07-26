@@ -21,12 +21,14 @@
 
 - (void)addChildControllers {
     
+    self.tabBar.tintColor = [UIColor cz_colorWithHex:0xDF0000];
+    
     NSArray *array = @[
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_news_normal"},
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"},
-                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"tabbar_icon_media_normal"}
+                       @{@"clsName": @"UIViewController", @"title": @"首页", @"imageName": @"news"},
+                       @{@"clsName": @"UIViewController", @"title": @"熊大", @"imageName": @"bar"},
+                       @{@"clsName": @"UIViewController", @"title": @"熊二", @"imageName": @"found"},
+                       @{@"clsName": @"UIViewController", @"title": @"熊三", @"imageName": @"me"},
+                       @{@"clsName": @"UIViewController", @"title": @"熊四", @"imageName": @"reader"}
                        ];
     
     NSMutableArray *arrayM = [[NSMutableArray alloc]init];
@@ -49,8 +51,14 @@
     
     vc.title = dict[@"title"];
     
-    NSString *imageName = dict[@"imageName"];
+    NSString *imageName = [NSString stringWithFormat:@"tabbar_icon_%@_normal", dict[@"imageName"]];
     vc.tabBarItem.image = [UIImage imageNamed:imageName];
+    
+    NSString *imageNameHL = [NSString stringWithFormat:@"tabbar_icon_%@_highlight", dict[@"imageName"]] ;
+    vc.tabBarItem.selectedImage = [[UIImage imageNamed:imageNameHL] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
+    
+    
+    
     
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     
