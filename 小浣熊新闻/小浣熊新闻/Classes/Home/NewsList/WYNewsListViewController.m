@@ -20,6 +20,8 @@ static NSString *cellId = @"cellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self loadData];
     [self setupUI];
 }
 
@@ -33,6 +35,13 @@ static NSString *cellId = @"cellId";
     cell.textLabel.text = @(indexPath.row).description;
     
     return cell;
+}
+
+#pragma mark - 加载数据
+- (void)loadData {
+    [[HLNetworkManager sharedManager] newsListWithChannel:@"T1348648517839" start:0 completion:^(NSArray *array, NSError *error) {
+        NSLog(@"%@",array);
+    }];
 }
 
 #pragma mark - 设置界面

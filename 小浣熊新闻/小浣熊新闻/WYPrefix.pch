@@ -10,6 +10,7 @@
 
 #import <Masonry.h>
 #import <NSObject+YYModel.h>
-#import "CZAdditions.h" 
+#import "CZAdditions.h"
+#import "HLNetworkManager.h"
 
 #endif

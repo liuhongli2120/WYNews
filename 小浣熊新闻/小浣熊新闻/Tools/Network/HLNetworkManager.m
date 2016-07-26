@@ -19,6 +19,8 @@
         
         NSURL *baseUrl = [NSURL URLWithString:@"http://c.m.163.com/nc/article/"];
         instance = [[self alloc]initWithBaseURL:baseUrl];
+        
+        instance.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",nil];
     });
     
     return instance;
@@ -40,14 +42,16 @@
         
         completion(error, nil);
     }];
-
 }
 
 #pragma mark - 网易新闻接口
 - (void)newsListWithChannel:(NSString *)channel start:(NSInteger)start completion:(void (^)(NSArray *, NSError *))completion{
     NSString *urlString = [NSString stringWithFormat:@"list/%@/%zd-20.html", channel, start];
     [self getRequest:urlString parameters:nil completion:^(id json, NSError *error) {
-        NSLog(@"%@", json);
+//        NSLog(@"%@", json);
+        
+        NSArray *array = json[channel];
+        completion(array,error);
     }];
 
 }
