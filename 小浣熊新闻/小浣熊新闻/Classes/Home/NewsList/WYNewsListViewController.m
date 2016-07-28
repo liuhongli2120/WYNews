@@ -11,6 +11,7 @@
 #import "WYNewsCell.h"
 #import "WYNewsNormalCell.h"
 #import <UIImageView+WebCache.h>
+#import "WYNewsExtraImagesCell.h"
 
 
 static NSString *cellId = @"cellId";
@@ -38,7 +39,7 @@ static NSString *cellId = @"cellId";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    WYNewsNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
+    WYNewsExtraImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     WYNewsListItem *model = _newsList[indexPath.row];
     
@@ -49,6 +50,16 @@ static NSString *cellId = @"cellId";
     //image
     NSURL *imageUrl = [NSURL URLWithString:model.imgsrc];
     [cell.iconView sd_setImageWithURL:imageUrl];
+    
+    //设置多图
+    
+    NSInteger idx = 0;
+    for (NSDictionary *dict in model.imgextra) {
+        NSURL *url = [NSURL URLWithString:dict[@"imgsrc"]];
+        
+        UIImageView *iv = cell.extraIcon[idx++];
+        [iv sd_setImageWithURL:url];
+    }
     
     
     
@@ -81,6 +92,7 @@ static NSString *cellId = @"cellId";
     }];
     
     [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:cellId];
+    [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:cellId];
     tv.dataSource = self;
     tv.delegate = self;
     
