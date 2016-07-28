@@ -7,11 +7,6 @@
 //
 
 #import "WYNewsCell.h"
-#import "WYNewsListItem.h"
-
-
-
-
 
 @implementation WYNewsCell
 

@@ -14,7 +14,8 @@
 #import "WYNewsExtraImagesCell.h"
 
 
-static NSString *cellId = @"cellId";
+static NSString *normalCellId = @"normalCellId";
+static NSString *extraCellId = @"extraCellId";
 
 @interface WYNewsListViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -39,9 +40,16 @@ static NSString *cellId = @"cellId";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    WYNewsExtraImagesCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    
     WYNewsListItem *model = _newsList[indexPath.row];
+    
+    NSString *cellId;
+    if (model.imgextra > 0) {
+        cellId = extraCellId;
+    } else {
+        cellId = normalCellId;
+    }
+    
+    WYNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     cell.titleLabel.text = model.title;
     cell.sourceLabel.text = model.source;
@@ -91,8 +99,8 @@ static NSString *cellId = @"cellId";
         make.edges.equalTo(self.view);
     }];
     
-    [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:cellId];
-    [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:cellId];
+    [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:normalCellId];
+    [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:extraCellId];
     tv.dataSource = self;
     tv.delegate = self;
     
