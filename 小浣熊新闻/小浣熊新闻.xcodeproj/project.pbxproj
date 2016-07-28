@@ -26,6 +26,9 @@
 		F215989A1D4665AD00FDFFCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21598991D4665AD00FDFFCC /* AppDelegate.m */; };
 		F21598A21D4665AD00FDFFCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21598A11D4665AD00FDFFCC /* Assets.xcassets */; };
 		F21598A51D4665AD00FDFFCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21598A31D4665AD00FDFFCC /* LaunchScreen.storyboard */; };
+		F2A64B4A1D49C3670086823B /* WYNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A64B491D49C3670086823B /* WYNewsCell.m */; };
+		F2A64B4C1D49C39F0086823B /* WYNewsNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A64B4B1D49C39F0086823B /* WYNewsNormalCell.xib */; };
+		F2A64B4F1D49CA5A0086823B /* WYNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A64B4E1D49CA5A0086823B /* WYNewsNormalCell.m */; };
 		F2B64B351D470AA100184380 /* WYNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B64B341D470AA100184380 /* WYNewsListViewController.m */; };
 		F2E807801D472DF200AC7752 /* HLNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E8077F1D472DF200AC7752 /* HLNetworkManager.m */; };
 		F2E807A71D47838400AC7752 /* WYNewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E807A61D47838400AC7752 /* WYNewsListItem.m */; };
@@ -72,6 +75,11 @@
 		F21598A11D4665AD00FDFFCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F21598A41D4665AD00FDFFCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F21598A61D4665AD00FDFFCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2A64B481D49C3670086823B /* WYNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsCell.h; sourceTree = "<group>"; };
+		F2A64B491D49C3670086823B /* WYNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsCell.m; sourceTree = "<group>"; };
+		F2A64B4B1D49C39F0086823B /* WYNewsNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYNewsNormalCell.xib; sourceTree = "<group>"; };
+		F2A64B4D1D49CA5A0086823B /* WYNewsNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsNormalCell.h; sourceTree = "<group>"; };
+		F2A64B4E1D49CA5A0086823B /* WYNewsNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsNormalCell.m; sourceTree = "<group>"; };
 		F2B64B331D470AA100184380 /* WYNewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNewsListViewController.h; sourceTree = "<group>"; };
 		F2B64B341D470AA100184380 /* WYNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNewsListViewController.m; sourceTree = "<group>"; };
 		F2E8077E1D472DF200AC7752 /* HLNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLNetworkManager.h; sourceTree = "<group>"; };
@@ -215,9 +223,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2A64B471D49C2DD0086823B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2A64B481D49C3670086823B /* WYNewsCell.h */,
+				F2A64B491D49C3670086823B /* WYNewsCell.m */,
+				F2A64B4D1D49CA5A0086823B /* WYNewsNormalCell.h */,
+				F2A64B4E1D49CA5A0086823B /* WYNewsNormalCell.m */,
+				F2A64B4B1D49C39F0086823B /* WYNewsNormalCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F2B64B0E1D46FBF200184380 /* NewsList(新闻列表) */ = {
 			isa = PBXGroup;
 			children = (
+				F2A64B471D49C2DD0086823B /* View */,
 				F2E807A41D47834200AC7752 /* Model */,
 				F2B64B331D470AA100184380 /* WYNewsListViewController.h */,
 				F2B64B341D470AA100184380 /* WYNewsListViewController.m */,
@@ -322,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A64B4C1D49C39F0086823B /* WYNewsNormalCell.xib in Resources */,
 				F21598A51D4665AD00FDFFCC /* LaunchScreen.storyboard in Resources */,
 				F21598A21D4665AD00FDFFCC /* Assets.xcassets in Resources */,
 			);
@@ -382,10 +404,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A64B4F1D49CA5A0086823B /* WYNewsNormalCell.m in Sources */,
 				F20881461D4669E600B351D6 /* UIColor+CZAddition.m in Sources */,
 				F20881401D4669E600B351D6 /* NSAttributedString+CZAdditon.m in Sources */,
 				F20881441D4669E600B351D6 /* NSString+CZPath.m in Sources */,
 				F208813F1D4669E600B351D6 /* NSArray+Log.m in Sources */,
+				F2A64B4A1D49C3670086823B /* WYNewsCell.m in Sources */,
 				F215989A1D4665AD00FDFFCC /* AppDelegate.m in Sources */,
 				F20881451D4669E600B351D6 /* UIButton+CZAddition.m in Sources */,
 				F20881491D4669E600B351D6 /* UIView+CZAddition.m in Sources */,
