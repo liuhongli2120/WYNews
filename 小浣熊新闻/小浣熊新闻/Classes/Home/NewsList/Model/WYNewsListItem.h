@@ -24,6 +24,7 @@
 
 //是否是大图标记
 @property (nonatomic, assign) BOOL imgType;
-
+//是否是顶部视图
+@property (nonatomic, assign) BOOL hasHead;
 
 @end

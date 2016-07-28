@@ -15,6 +15,7 @@
 static NSString *normalCellId = @"normalCellId";
 static NSString *extraCellId = @"extraCellId";
 static NSString *bigImageCellId = @"bigImageCellId";
+static NSString *headerCellId = @"headerCellId";
 
 @interface WYNewsListViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -42,7 +43,10 @@ static NSString *bigImageCellId = @"bigImageCellId";
     WYNewsListItem *model = _newsList[indexPath.row];
     
     NSString *cellId;
-    if (model.imgType) {
+    
+    if (model.hasHead) {
+        cellId = headerCellId;
+    } else if (model.imgType) {
         cellId = bigImageCellId;
     } else if (model.imgextra > 0) {
         cellId = extraCellId;
@@ -106,6 +110,7 @@ static NSString *bigImageCellId = @"bigImageCellId";
     [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:normalCellId];
     [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:extraCellId];
     [tv registerNib:[UINib nibWithNibName:@"WYNewsBigImageCell" bundle:nil] forCellReuseIdentifier:bigImageCellId];
+    [tv registerNib:[UINib nibWithNibName:@"WYNewsBigImageCell" bundle:nil] forCellReuseIdentifier:headerCellId];
     
     
     tv.dataSource = self;
