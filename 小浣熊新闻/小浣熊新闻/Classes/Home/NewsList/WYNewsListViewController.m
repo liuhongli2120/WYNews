@@ -14,6 +14,7 @@
 
 static NSString *normalCellId = @"normalCellId";
 static NSString *extraCellId = @"extraCellId";
+static NSString *bigImageCellId = @"bigImageCellId";
 
 @interface WYNewsListViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -41,7 +42,9 @@ static NSString *extraCellId = @"extraCellId";
     WYNewsListItem *model = _newsList[indexPath.row];
     
     NSString *cellId;
-    if (model.imgextra > 0) {
+    if (model.imgType) {
+        cellId = bigImageCellId;
+    } else if (model.imgextra > 0) {
         cellId = extraCellId;
     } else {
         cellId = normalCellId;
@@ -75,6 +78,9 @@ static NSString *extraCellId = @"extraCellId";
 
 #pragma mark - 加载数据
 - (void)loadData {
+    
+    //T1348648517839(娱乐)
+    //T1348648141035(军事)
     [[HLNetworkManager sharedManager] newsListWithChannel:@"T1348648517839" start:0 completion:^(NSArray *array, NSError *error) {
         NSLog(@"%@",array);
         //字典转模型
@@ -99,6 +105,9 @@ static NSString *extraCellId = @"extraCellId";
     
     [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:normalCellId];
     [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:extraCellId];
+    [tv registerNib:[UINib nibWithNibName:@"WYNewsBigImageCell" bundle:nil] forCellReuseIdentifier:bigImageCellId];
+    
+    
     tv.dataSource = self;
     tv.delegate = self;
     
