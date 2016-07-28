@@ -9,9 +9,7 @@
 #import "WYNewsListViewController.h"
 #import "WYNewsListItem.h"
 #import "WYNewsCell.h"
-#import "WYNewsNormalCell.h"
 #import <UIImageView+WebCache.h>
-#import "WYNewsExtraImagesCell.h"
 
 
 static NSString *normalCellId = @"normalCellId";
