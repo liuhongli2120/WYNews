@@ -12,5 +12,6 @@
 #import <NSObject+YYModel.h>
 #import "CZAdditions.h"
 #import "HLNetworkManager.h"
+#import "UIImageView+CZ_WebImage.h"
 
 #endif

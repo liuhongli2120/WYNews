@@ -36,20 +36,17 @@
     _sourceLabel.text = newsItem.source;
     _replyLabel.text = @(newsItem.replyCount).description;
     
-    //image
-    NSURL *imageUrl = [NSURL URLWithString:newsItem.imgsrc];
-    [_iconView sd_setImageWithURL:imageUrl];
+    //设置单图
+    [_iconView cz_setImageWithURLString:newsItem.imgsrc];
     
     //设置多图
     
     NSInteger idx = 0;
     for (NSDictionary *dict in newsItem.imgextra) {
-        NSURL *url = [NSURL URLWithString:dict[@"imgsrc"]];
         
-        UIImageView *iv = _extraIcon[idx++];
-        [iv sd_setImageWithURL:url];
+        //设置多图,是字典,从字典里遍历取值(newsItem.imgsrc)
+        [_extraIcon[idx++] cz_setImageWithURLString:dict[@"imgsrc"]];
     }
-
 }
 
 
