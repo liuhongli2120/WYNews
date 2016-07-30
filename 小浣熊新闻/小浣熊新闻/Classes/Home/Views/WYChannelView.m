@@ -29,12 +29,31 @@
     _channelList = channelList;
     
     
+    CGFloat x = 20;
+    CGFloat margin = 8;
+    CGFloat height = _scrollView.bounds.size.height;
+    
+    
+    
     for (WYChannel *channel in channelList) {
-        //创建标签
+        //创建标签,调用字体 label 的类方法
         WYChannelLabel *l = [WYChannelLabel channelLabelWithTitle:channel.tname];
+        
+        //设置 label 的位置
+        l.frame = CGRectMake(x, 0, l.bounds.size.width, height);
+        //递增 x
+        x += l.bounds.size.width + margin;
+        
         //添加滚动视图
         [_scrollView addSubview:l];
     }
+    
+    //设置 scrollView 的 contentSize, 设置之后就可以滚动
+    _scrollView.contentSize = CGSizeMake(x, height);
+    
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    
 }
 
 
