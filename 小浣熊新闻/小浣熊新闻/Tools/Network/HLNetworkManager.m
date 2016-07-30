@@ -21,6 +21,8 @@
         instance = [[self alloc]initWithBaseURL:baseUrl];
         
         instance.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",nil];
+        
+        
     });
     
     return instance;
@@ -40,7 +42,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"网络请求失败 %@", error);
         
-        completion(error, nil);
+        completion(nil, error);
     }];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AFNetworkActivityIndicatorManager.h>
 
 @interface AppDelegate ()
 
@@ -17,12 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //设置网络指示器
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     [self setupApprearace];
     
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
     
-    Class cls = NSClassFromString(@"WYNewsListViewController");
+    Class cls = NSClassFromString(@"WYMainViewController");
     
     UIViewController *vc = [[cls alloc]init];
     _window.rootViewController = vc;
