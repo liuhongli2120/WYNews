@@ -8,6 +8,7 @@
 
 #import "WYChannelView.h"
 #import "WYChannel.h"
+#import "WYChannelLabel.h"
 
 @interface WYChannelView()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -29,7 +30,9 @@
     
     
     for (WYChannel *channel in channelList) {
-        UILabel *l = [UILabel cz_labelWithText:channel.tname fontSize:14 color:[UIColor blackColor]];
+        //创建标签
+        WYChannelLabel *l = [WYChannelLabel channelLabelWithTitle:channel.tname];
+        //添加滚动视图
         [_scrollView addSubview:l];
     }
 }
