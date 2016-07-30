@@ -11,7 +11,8 @@
 #import "WYChannel.h"
 
 @interface WYHomeViewController ()
-
+/// 频道视图
+@property(nonatomic,strong)WYChannelView *channelView;
 @end
 
 @implementation WYHomeViewController{
@@ -26,13 +27,15 @@
     [self setupUI];
     //测试频道数据
     _channelList = [WYChannel channelList];
-    NSLog(@"%@",_channelList);
+    
+    _channelView.channelList = _channelList;
     
 }
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor cz_randomColor];
     WYChannelView *cv = [WYChannelView channelView];
+    
     
     [self.view addSubview:cv];
     
@@ -41,6 +44,9 @@
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(38);
     }];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _channelView = cv;
     
 
 }

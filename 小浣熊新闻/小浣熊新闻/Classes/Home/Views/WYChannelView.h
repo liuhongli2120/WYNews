@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WYChannel;
 
 @interface WYChannelView : UIView
+/// 频道列表数组
+@property(nonatomic,strong)NSArray <WYChannel *> *channelList;
 
 + (instancetype)channelView;
+
 
 @end

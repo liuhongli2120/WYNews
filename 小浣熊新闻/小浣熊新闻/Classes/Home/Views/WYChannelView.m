@@ -7,11 +7,10 @@
 //
 
 #import "WYChannelView.h"
+#import "WYChannel.h"
 
 @interface WYChannelView()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
-
 
 @end
 
@@ -20,8 +19,19 @@
 + (instancetype)channelView {
     
     UINib *nib = [UINib nibWithNibName:@"WYChannelView" bundle:nil];
-    return  [nib instantiateWithOwner:nil options:nil].lastObject;
+    
+    return [nib instantiateWithOwner:nil options:nil].lastObject;
 
+}
+
+- (void)setChannelList:(NSArray<WYChannel *> *)channelList {
+    _channelList = channelList;
+    
+    
+    for (WYChannel *channel in channelList) {
+        UILabel *l = [UILabel cz_labelWithText:channel.tname fontSize:14 color:[UIColor blackColor]];
+        [_scrollView addSubview:l];
+    }
 }
 
 
