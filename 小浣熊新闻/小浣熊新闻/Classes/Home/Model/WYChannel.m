@@ -23,7 +23,10 @@
     
     NSArray *modelArray = [NSArray yy_modelArrayWithClass:[self class] json:array];
     
-    return modelArray;
+    return [modelArray sortedArrayUsingComparator:^NSComparisonResult(WYChannel *obj1, WYChannel *obj2) {
+        //对tid进行升序排列
+        return [obj1.tid compare:obj2.tid];
+    }];
 
 }
 
