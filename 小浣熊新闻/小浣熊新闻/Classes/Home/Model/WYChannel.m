@@ -10,4 +10,22 @@
 
 @implementation WYChannel
 
+- (NSString *)description {
+    return [self yy_modelDescription];
+}
+
++(NSArray *)channelList {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"topic_news.json" withExtension:nil];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *array = dict[@"tList"];
+    
+    NSArray *modelArray = [NSArray yy_modelArrayWithClass:[self class] json:array];
+    
+    return modelArray;
+
+}
+
+
 @end
