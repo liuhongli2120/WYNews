@@ -141,6 +141,14 @@
     return vc;
 }
 
+
+#pragma mark - 实现监听方法
+- (void)didSelectedIndex:(WYChannelView *)cv {
+    
+    NSLog(@"选中的标签:%zd", cv.selectedIndex);
+
+}
+
 - (void)setupUI {
     self.view.backgroundColor = [UIColor cz_randomColor];
     WYChannelView *cv = [WYChannelView channelView];
@@ -158,6 +166,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO; 
     
     _channelView = cv;
+    
+    //添加监听方法
+    [cv addTarget:self action:@selector(didSelectedIndex:) forControlEvents:UIControlEventValueChanged];
+    
     
     
     [self setupPageController];

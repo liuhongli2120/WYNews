@@ -17,6 +17,7 @@
     
     //实例化标签,用大字体撑开 bounds ,布局大字体空间
     WYChannelLabel *l = [WYChannelLabel cz_labelWithText:title fontSize:kSelectedSize color:[UIColor blackColor]];
+    
     //设置文本对齐方式
     l.textAlignment = NSTextAlignmentCenter;
     //设置小字体

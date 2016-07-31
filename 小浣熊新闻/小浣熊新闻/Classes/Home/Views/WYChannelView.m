@@ -34,7 +34,7 @@
     CGFloat height = _scrollView.bounds.size.height;
     
     
-    
+    NSInteger idx = 0;
     for (WYChannel *channel in channelList) {
         //创建标签,调用字体 label 的类方法
         WYChannelLabel *l = [WYChannelLabel channelLabelWithTitle:channel.tname];
@@ -48,6 +48,8 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLabel:)];
         
         [l addGestureRecognizer:tap];
+        
+        l.tag = idx++;
         
         //添加滚动视图
         [_scrollView addSubview:l];
@@ -64,12 +66,17 @@
 }
 /// touch,在试图内部实现,无法在外部监听 ,如果用touch还需要代理或自定义控件传递事件
 ///
-/// 手势可以在外部添加手势识别,便于监听
+/// 手势可以在外部添加,便于监听
 - (void)tapLabel:(UITapGestureRecognizer *)recogenizer {
     //父类转到子类要强转
     WYChannelLabel *l = (WYChannelLabel *)recogenizer.view;
     
-    NSLog(@"%@", l.text);
+    NSLog(@"%@, %zd", l.text, l.tag);
+    
+    //记录属性值
+    _selectedIndex = l.tag;
+    
+    [self sendActionsForControlEvents:UIControlEventValueChanged]; 
 
 }
 
