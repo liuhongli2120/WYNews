@@ -42,9 +42,9 @@
     _scale = scale;
     
     float max = (float)kSelectedSize / kNormalSize;
-    float min = 1;
     
-    float s = (max - 1)*scale + min;
+    float s = 1 + scale*(max - 1 );
+    
     
     self.transform = CGAffineTransformMakeScale(s, s);
     //设置字体颜色
