@@ -88,6 +88,9 @@ static NSString *headerCellId = @"headerCellId";
         make.edges.equalTo(self.view);
     }];
     
+    //设置表格的 contentInset
+    tv.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    
     [tv registerNib:[UINib nibWithNibName:@"WYNewsNormalCell" bundle:nil] forCellReuseIdentifier:normalCellId];
     [tv registerNib:[UINib nibWithNibName:@"WYNewsExtraImagesCell" bundle:nil] forCellReuseIdentifier:extraCellId];
     [tv registerNib:[UINib nibWithNibName:@"WYNewsBigImageCell" bundle:nil] forCellReuseIdentifier:bigImageCellId];
