@@ -46,7 +46,25 @@
         NSLog(@"%@", img);
         NSLog(@"%@", video);
         
-        [self.webView loadHTMLString:body baseURL:nil]; 
+        
+        
+        for (NSDictionary *dict in img) {
+            NSString *ref = dict[@"ref"];
+            
+            NSRange range = [body rangeOfString:ref];
+            
+            if (range.location == NSNotFound) {
+                continue;
+            }
+            
+            NSString *imgStr = [NSString stringWithFormat:@"<img src=\"%@\" />", dict[@"src"]];
+            body = [body stringByReplacingCharactersInRange:range withString:imgStr];
+            
+        }
+        
+        
+        
+        [self.webView loadHTMLString:body baseURL:nil];
         
         NSLog(@"%@", dict);
     }];
