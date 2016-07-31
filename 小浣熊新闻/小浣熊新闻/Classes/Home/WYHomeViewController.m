@@ -11,6 +11,7 @@
 #import "WYChannel.h"
 #import "WYNewsListViewController.h"
 
+
 @interface WYHomeViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 /// 频道视图
 @property(nonatomic,strong)WYChannelView *channelView;
@@ -18,6 +19,11 @@
 @property(nonatomic,weak)UIPageViewController *pageViewController;
 /// 分页控制器内部的滚动视图
 @property(nonatomic,weak)UIScrollView *pageScrollView;
+/// 当前列表控制器
+@property(nonatomic,weak)WYNewsListViewController *currentListVC;
+/// 将要显示列表 控制器
+@property(nonatomic,weak)WYNewsListViewController *nextListVC;
+
 
 
 @end
@@ -51,7 +57,20 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
 //    NSLog(@"====0000=====>%@, %@, %@", keyPath, object, change);
     
-    NSLog(@"%@", NSStringFromCGPoint(_pageScrollView.contentOffset));
+//    NSLog(@"%@", NSStringFromCGPoint(_pageScrollView.contentOffset));
+    
+    CGFloat width = _pageScrollView.bounds.size.width;
+    
+    CGFloat offSetX = ABS(_pageScrollView.contentOffset.x - width);
+    
+    CGFloat scale = offSetX / width;
+    NSLog(@"%f,从%zd,到 %zd", scale, _currentListVC.channelIndex,_nextListVC.channelIndex);
+    
+    //根据索引调整频道视图中标签的比例
+    [_channelView changeLabelWithIndex:_currentListVC.channelIndex scale:(1 - scale)];
+    [_channelView changeLabelWithIndex:_nextListVC.channelIndex scale:scale];
+    
+//    NSLog(@"%f", offSetX);
 
 }
 
@@ -62,6 +81,10 @@
     NSLog(@"当前控制器 %@", [pageViewController.viewControllers valueForKey:@"channelIndex"]);
     
     NSLog(@"要显示的 %@", [pendingViewControllers valueForKey:@"channelIndex"]);
+    
+    //记录当前列表和将要显示列表控制器
+    _currentListVC = pageViewController.viewControllers[0];
+    _nextListVC = pendingViewControllers[0];
     
     
     NSLog(@"%@", [pageViewController.view subviews][0]);

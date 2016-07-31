@@ -15,5 +15,7 @@
 
 + (instancetype)channelView;
 
+- (void)changeLabelWithIndex:(NSInteger)index scale:(float)scale;
+
 
 @end
