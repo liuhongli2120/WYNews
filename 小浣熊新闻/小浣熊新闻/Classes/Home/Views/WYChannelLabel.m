@@ -25,7 +25,7 @@
     return l;
 
 }
-
+//这种缩放比例是固定的,如果开发中遇到直接拷贝
 - (void)setScale:(float)scale {
     
     _scale = scale;
@@ -36,7 +36,8 @@
     float s = (max - 1)*scale + min;
     
     self.transform = CGAffineTransformMakeScale(s, s);
-     
+    //设置字体颜色
+    self.textColor = [UIColor colorWithRed:scale green:0 blue:0 alpha:1.0];
 }
 
 @end

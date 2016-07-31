@@ -63,7 +63,6 @@
     WYChannelLabel *l = _scrollView.subviews[index];
     
     l.scale = scale;
-
 }
 
 
