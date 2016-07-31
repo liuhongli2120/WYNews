@@ -11,6 +11,7 @@
 #import "WYChannel.h"
 #import "WYNewsListViewController.h"
 #import "WYNewsListItem.h"
+#import "WYNewsListDetailViewController.h"
 
 extern NSString *const WYNewsListDidSelectedDocNotification;
 
@@ -64,6 +65,18 @@ extern NSString *const WYNewsListDidSelectedDocNotification;
     
     //获取通知的对象
     WYNewsListItem *model = n.object;
+    
+    WYNewsListDetailViewController *vc = [WYNewsListDetailViewController new];
+    
+    vc.item = model;
+    
+    //隐藏底部bar
+    vc.hidesBottomBarWhenPushed = YES; 
+    
+    //push
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
 
 }
 
