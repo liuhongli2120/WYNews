@@ -68,10 +68,11 @@ extern NSString *const WYNewsListDidSelectedDocNotification;
     
     WYNewsListDetailViewController *vc = [WYNewsListDetailViewController new];
     
+    //传递模型
     vc.item = model;
     
     //隐藏底部bar
-    vc.hidesBottomBarWhenPushed = YES; 
+    vc.hidesBottomBarWhenPushed = YES;
     
     //push
     [self.navigationController pushViewController:vc animated:YES];

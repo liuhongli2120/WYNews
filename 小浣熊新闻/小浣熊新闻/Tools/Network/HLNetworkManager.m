@@ -55,6 +55,17 @@
         NSArray *array = json[channel];
         completion(array,error);
     }];
+}
+
+- (void)newsListDetailWithDocId:(NSString *)docid completion:(void (^)(NSDictionary *, NSError *))completion {
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/full.html", docid];
+    
+    [self getRequest:urlString parameters:nil completion:^(id json, NSError *error) {
+//        NSLog(@"%@", json);
+        //完成回调
+        completion(json[docid], error);
+    }];
 
 }
 

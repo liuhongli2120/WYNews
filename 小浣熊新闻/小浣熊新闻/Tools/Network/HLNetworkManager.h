@@ -20,4 +20,10 @@
 
 - (void)newsListWithChannel:(NSString *)channel start:(NSInteger)start completion:(void(^)(NSArray *array, NSError *error))completion;
 
+/// 使用 docid 加载新闻明细
+///
+/// @param docid      文档编号
+/// @param completion 完成回调[字典/错误] 
+- (void)newsListDetailWithDocId:(NSString *)docid completion:(void(^)(NSDictionary *dict, NSError *error))completion;
+
 @end
