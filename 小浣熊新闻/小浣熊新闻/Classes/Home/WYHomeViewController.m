@@ -64,12 +64,12 @@
     CGFloat offSetX = ABS(_pageScrollView.contentOffset.x - width);
     
     CGFloat scale = offSetX / width;
-    NSLog(@"%f,从%zd,到 %zd", scale, _currentListVC.channelIndex,_nextListVC.channelIndex);
+//    NSLog(@"%f,从%zd,到 %zd", scale, _currentListVC.channelIndex,_nextListVC.channelIndex);
     
     //根据索引调整频道视图中标签的比例
     [_channelView changeLabelWithIndex:_currentListVC.channelIndex scale:(1 - scale)];
     [_channelView changeLabelWithIndex:_nextListVC.channelIndex scale:scale];
-    
+     
 //    NSLog(@"%f", offSetX);
 
 }
@@ -78,18 +78,18 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<WYNewsListViewController *> *)pendingViewControllers {
     
-    NSLog(@"当前控制器 %@", [pageViewController.viewControllers valueForKey:@"channelIndex"]);
+//    NSLog(@"当前控制器 %@", [pageViewController.viewControllers valueForKey:@"channelIndex"]);
     
-    NSLog(@"要显示的 %@", [pendingViewControllers valueForKey:@"channelIndex"]);
+//    NSLog(@"要显示的 %@", [pendingViewControllers valueForKey:@"channelIndex"]);
     
     //记录当前列表和将要显示列表控制器
     _currentListVC = pageViewController.viewControllers[0];
     _nextListVC = pendingViewControllers[0];
     
     
-    NSLog(@"%@", [pageViewController.view subviews][0]);
+//    NSLog(@"%@", [pageViewController.view subviews][0]);
     
-    NSLog(@"=====>%@", _pageScrollView);
+//    NSLog(@"=====>%@", _pageScrollView);
     
     /// KVO 监听滚动视图
     [_pageScrollView addObserver:self forKeyPath:@"contentOffset" options:0 context:NULL];
@@ -99,7 +99,7 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<WYNewsListViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     
-    NSLog(@"前一个控制器数组 %@", [previousViewControllers valueForKey:@"channelIndex"]);
+//    NSLog(@"前一个控制器数组 %@", [previousViewControllers valueForKey:@"channelIndex"]);
     ///用观察者监听只有两种方式,一种是KVO,用的很少,因为它只有一个目的,监听某个对象的某个特殊属性的变化 ,在监听WebView时,因为整个页面的大小不知道,监听的是 contentOffsize的高度
     /// 注销滚动视图的观察者,一旦注销观察者,后续分页控制器导致的 contentOffset 不再监听
     //保证监听的变化就是一个完整屏的数值变化

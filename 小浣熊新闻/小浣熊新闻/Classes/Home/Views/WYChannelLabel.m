@@ -21,10 +21,20 @@
     l.textAlignment = NSTextAlignmentCenter;
     //设置小字体
     l.font = [UIFont systemFontOfSize:kNormalSize];
+    
+    //开启用户交互
+    l.userInteractionEnabled = YES;
+    
     //返回标签, 返回的 bounds 是大字体撑开后的 bounds
     return l;
 
 }
+///// touch,在试图内部实现,无法在外部监听 
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"%s, %@", __FUNCTION__, self.text);
+//
+//}
+
 //这种缩放比例是固定的,如果开发中遇到直接拷贝
 - (void)setScale:(float)scale {
     

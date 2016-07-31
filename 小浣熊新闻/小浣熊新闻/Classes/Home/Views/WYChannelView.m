@@ -44,6 +44,11 @@
         //递增 x
         x += l.bounds.size.width + margin;
         
+        //添加手势识别
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLabel:)];
+        
+        [l addGestureRecognizer:tap];
+        
         //添加滚动视图
         [_scrollView addSubview:l];
     }
@@ -57,13 +62,26 @@
     [self changeLabelWithIndex:0 scale:1];
     
 }
+/// touch,在试图内部实现,无法在外部监听 ,如果用touch还需要代理或自定义控件传递事件
+///
+/// 手势可以在外部添加手势识别,便于监听
+- (void)tapLabel:(UITapGestureRecognizer *)recogenizer {
+    //父类转到子类要强转
+    WYChannelLabel *l = (WYChannelLabel *)recogenizer.view;
+    
+    NSLog(@"%@", l.text);
+
+}
 
 - (void)changeLabelWithIndex:(NSInteger)index scale:(float)scale {
     //根据index取出对应的label
     WYChannelLabel *l = _scrollView.subviews[index];
     
+    
     l.scale = scale;
 }
+
+
 
 
 @end
