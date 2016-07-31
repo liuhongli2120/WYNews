@@ -11,6 +11,9 @@
 #import "WYNewsCell.h"
 #import <UIImageView+WebCache.h>
 
+//新闻列表选中文档通知
+NSString *const WYNewsListDidSelectedDocNotification = @"WYNewsListDidSelectedDocNotification";
+
 
 static NSString *normalCellId = @"normalCellId";
 static NSString *extraCellId = @"extraCellId";
@@ -46,6 +49,18 @@ static NSString *headerCellId = @"headerCellId";
     [self loadData];
     [self setupUI];
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"%@", _newsList[indexPath .row]);
+    
+    WYNewsListItem *model = _newsList[indexPath.row];
+    //发送通知 ,有发送就有监听通知,主控制器监听,因为主控制器负责页面的跳转
+    [[NSNotificationCenter defaultCenter] postNotificationName:WYNewsListDidSelectedDocNotification object:model];
+
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _newsList.count;

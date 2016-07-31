@@ -26,5 +26,7 @@
 @property (nonatomic, assign) BOOL imgType;
 //是否是顶部视图
 @property (nonatomic, assign) BOOL hasHead;
+/// 文档代号 
+@property (nonatomic,copy)NSString *docid;
 
 @end

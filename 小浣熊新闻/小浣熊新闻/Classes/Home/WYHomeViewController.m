@@ -10,7 +10,9 @@
 #import "WYChannelView.h"
 #import "WYChannel.h"
 #import "WYNewsListViewController.h"
+#import "WYNewsListItem.h"
 
+extern NSString *const WYNewsListDidSelectedDocNotification;
 
 @interface WYHomeViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 /// 频道视图
@@ -44,7 +46,27 @@
     
     _channelView.channelList = _channelList;
     
+    
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectDoc:) name:WYNewsListDidSelectedDocNotification object:nil];
+    
 }
+
+//销毁通知
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - 监听通知
+- (void)didSelectDoc:(NSNotification *)n {
+    
+    NSLog(@"接收到的通知 %@",n.object);
+    
+    //获取通知的对象
+    WYNewsListItem *model = n.object;
+
+}
+
 
 #pragma mark -  KVO 的监听方法
 
