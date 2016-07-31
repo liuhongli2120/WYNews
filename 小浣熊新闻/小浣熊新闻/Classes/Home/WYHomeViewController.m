@@ -40,12 +40,21 @@ extern NSString *const WYNewsListDidSelectedDocNotification;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //隐藏导航栏,有两种方式
+    //1> 这种不好,会丢失手势
+//    self.navigationController.navigationBarHidden = YES;
+    //2>  会保留边缘返回手势
+    self.navigationController.navigationBar.hidden = YES;
+    
+    
+    
     //测试频道数据
     _channelList = [WYChannel channelList];
     
     [self setupUI];
     
     _channelView.channelList = _channelList;
+    
     
     
     //注册通知
@@ -211,14 +220,29 @@ extern NSString *const WYNewsListDidSelectedDocNotification;
 }
 
 - (void)setupUI {
-    self.view.backgroundColor = [UIColor cz_randomColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationBar *navBar = [[UINavigationBar alloc]init];
+    
+    [self.view addSubview:navBar];
+    
+    [navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self.view);
+        //高度是64,包含了状态栏的高度
+        make.height.mas_equalTo(64);
+    }];
+    
+    UINavigationItem *item = [[UINavigationItem alloc]initWithTitle:@"网易新闻"];
+    
+    navBar.items = @[item];
+    
     WYChannelView *cv = [WYChannelView channelView];
     
     
     [self.view addSubview:cv];
     
     [cv mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_topLayoutGuide);
+        make.top.mas_equalTo(navBar.mas_bottom);
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(38);
     }];

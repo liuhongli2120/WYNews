@@ -63,12 +63,37 @@
         }
         
         
+        for (NSDictionary *dict in video) {
+            NSString *ref = dict[@"ref"];
+            
+            NSRange range = [body rangeOfString:ref];
+            
+            if (range.location == NSNotFound) {
+                continue;
+            }
+            
+            NSString *videoStr = [NSString stringWithFormat:@"<video src=\"%@\" />", dict[@"mp4_url"]];
+            body = [body stringByReplacingCharactersInRange:range withString:videoStr];
+            
+            
+            
+        }
+        
+        body = [[self cssString ] stringByAppendingString:body];
         
         [self.webView loadHTMLString:body baseURL:nil];
         
         NSLog(@"%@", dict);
     }];
  
+}
+
+
+- (NSString *)cssString {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"news.css" ofType:nil];
+    
+    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+
 }
 
 
