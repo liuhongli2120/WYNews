@@ -10,6 +10,9 @@
 
 @interface WYChannelLabel : UILabel
 
+/// 字体缩放比例 
+@property(nonatomic,assign)float scale;
+
 + (instancetype)channelLabelWithTitle:(NSString *)title;
 
 @end

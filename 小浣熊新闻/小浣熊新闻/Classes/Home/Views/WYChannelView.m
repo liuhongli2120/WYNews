@@ -29,7 +29,7 @@
     _channelList = channelList;
     
     
-    CGFloat x = 20;
+    CGFloat x = 30;
     CGFloat margin = 8;
     CGFloat height = _scrollView.bounds.size.height;
     
@@ -54,6 +54,16 @@
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     
+    [self changeLabelWithIndex:0 scale:1];
+    
+}
+
+- (void)changeLabelWithIndex:(NSInteger)index scale:(float)scale {
+    //根据index取出对应的label
+    WYChannelLabel *l = _scrollView.subviews[index];
+    
+    l.scale = scale;
+
 }
 
 

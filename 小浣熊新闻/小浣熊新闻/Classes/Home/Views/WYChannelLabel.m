@@ -26,4 +26,17 @@
 
 }
 
+- (void)setScale:(float)scale {
+    
+    _scale = scale;
+    
+    float max = (float)kSelectedSize / kNormalSize;
+    float min = 1;
+    
+    float s = (max - 1)*scale + min;
+    
+    self.transform = CGAffineTransformMakeScale(s, s);
+     
+}
+
 @end
