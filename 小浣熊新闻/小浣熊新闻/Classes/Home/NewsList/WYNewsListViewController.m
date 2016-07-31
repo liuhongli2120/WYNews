@@ -80,7 +80,7 @@ static NSString *headerCellId = @"headerCellId";
     //T1348648517839(娱乐)
     //T1348648141035(军事)
     [[HLNetworkManager sharedManager] newsListWithChannel:_channelId start:0 completion:^(NSArray *array, NSError *error) {
-        NSLog(@"%@",array);
+//        NSLog(@"%@",array);
         //字典转模型
         NSArray *list = [NSArray yy_modelArrayWithClass:[WYNewsListItem class] json:array];
         

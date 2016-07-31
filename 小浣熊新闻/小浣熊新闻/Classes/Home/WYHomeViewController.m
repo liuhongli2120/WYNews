@@ -34,13 +34,37 @@
     
 }
 
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-//
-//}
-//
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-//
-//}
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(WYNewsListViewController *)viewController {
+    
+    NSInteger idx = viewController.channelIndex;
+    
+    idx--;
+    
+    //判断idx
+    if (idx < 0) {
+        NSLog(@"没有前一个");
+        return nil;
+    }
+    //创建新的控制器
+    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[idx].tid index:idx];
+    
+    return vc;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(WYNewsListViewController *)viewController {
+    
+    NSInteger idx = viewController.channelIndex;
+    
+    idx++;
+    
+    if (idx > _channelList.count) {
+        NSLog(@"没有后一个");
+    }
+    
+    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[idx].tid index:idx];
+    
+    return vc;
+}
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor cz_randomColor];
@@ -70,7 +94,7 @@
     UIPageViewController *pc = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     //设置分页控制器的子控制器
-    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[0].tid   index:0];
+    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[2].tid   index:2 ];
     
     [pc setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
