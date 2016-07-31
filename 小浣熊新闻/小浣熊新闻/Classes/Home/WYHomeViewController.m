@@ -11,7 +11,7 @@
 #import "WYChannel.h"
 #import "WYNewsListViewController.h"
 
-@interface WYHomeViewController () <UIPageViewControllerDataSource>
+@interface WYHomeViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 /// 频道视图
 @property(nonatomic,strong)WYChannelView *channelView;
 @end
@@ -33,6 +33,26 @@
     _channelView.channelList = _channelList;
     
 }
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+    
+    NSLog(@"当前控制器 %@", [pageViewController.viewControllers valueForKey:@"channelIndex"]);
+    
+    NSLog(@"要显示的 %@", [pendingViewControllers valueForKey:@"channelIndex"]);
+    
+    
+    NSLog(@"%@", [pageViewController.view subviews][0]);
+
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    
+    NSLog(@"前一个控制器数组 %@", [previousViewControllers valueForKey:@"channelIndex"]);
+    
+
+}
+
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(WYNewsListViewController *)viewController {
     
@@ -112,6 +132,8 @@
     [pc didMoveToParentViewController:self];
     
     pc.dataSource = self;
+    
+    pc.delegate = self;
     
 
 }
