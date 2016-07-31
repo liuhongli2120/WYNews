@@ -11,7 +11,7 @@
 #import "WYChannel.h"
 #import "WYNewsListViewController.h"
 
-@interface WYHomeViewController ()
+@interface WYHomeViewController () <UIPageViewControllerDataSource>
 /// 频道视图
 @property(nonatomic,strong)WYChannelView *channelView;
 @end
@@ -25,13 +25,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupUI];
     //测试频道数据
     _channelList = [WYChannel channelList];
+    
+    [self setupUI];
     
     _channelView.channelList = _channelList;
     
 }
+
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+//
+//}
+//
+//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+//
+//}
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor cz_randomColor];
@@ -46,7 +55,9 @@
         make.height.mas_equalTo(38);
     }];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //取消自动调整滚动视图间距
+    self.automaticallyAdjustsScrollViewInsets = NO; 
+    
     _channelView = cv;
     
     
@@ -59,7 +70,7 @@
     UIPageViewController *pc = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     //设置分页控制器的子控制器
-    WYNewsListViewController *vc = [WYNewsListViewController new];
+    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[0].tid   index:0];
     
     [pc setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
@@ -75,6 +86,8 @@
     }];
     //完成子控制器的添加
     [pc didMoveToParentViewController:self];
+    
+    pc.dataSource = self;
     
 
 }

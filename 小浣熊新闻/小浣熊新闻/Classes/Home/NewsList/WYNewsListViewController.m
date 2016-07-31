@@ -27,6 +27,19 @@ static NSString *headerCellId = @"headerCellId";
 
 @implementation WYNewsListViewController
 
+- (instancetype)initWithChannelId:(NSString *)channelId index:(NSInteger)index {
+    
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        _channelId = channelId;
+        _channelIndex = index;
+    }
+    return self;
+}
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -66,7 +79,7 @@ static NSString *headerCellId = @"headerCellId";
     
     //T1348648517839(娱乐)
     //T1348648141035(军事)
-    [[HLNetworkManager sharedManager] newsListWithChannel:@"T1348654151579" start:0 completion:^(NSArray *array, NSError *error) {
+    [[HLNetworkManager sharedManager] newsListWithChannel:_channelId start:0 completion:^(NSArray *array, NSError *error) {
         NSLog(@"%@",array);
         //字典转模型
         NSArray *list = [NSArray yy_modelArrayWithClass:[WYNewsListItem class] json:array];
