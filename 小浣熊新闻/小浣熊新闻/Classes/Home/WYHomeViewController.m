@@ -14,6 +14,12 @@
 @interface WYHomeViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 /// 频道视图
 @property(nonatomic,strong)WYChannelView *channelView;
+/// 分页控制器
+@property(nonatomic,weak)UIPageViewController *pageViewController;
+/// 分页控制器内部的滚动视图
+@property(nonatomic,weak)UIScrollView *pageScrollView;
+
+
 @end
 
 @implementation WYHomeViewController{
@@ -34,7 +40,24 @@
     
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+#pragma mark -  KVO 的监听方法
+
+/// 是KVO统一调用的方法
+///
+/// @param keyPath 监听的 keyPath (属性)
+/// @param object  监听的对象,可以通过对象获得属性 值
+/// @param change  监听的变化
+/// @param context 上下文,一般是null
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+//    NSLog(@"====0000=====>%@, %@, %@", keyPath, object, change);
+    
+    NSLog(@"%@", NSStringFromCGPoint(_pageScrollView.contentOffset));
+
+}
+
+
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<WYNewsListViewController *> *)pendingViewControllers {
     
     NSLog(@"当前控制器 %@", [pageViewController.viewControllers valueForKey:@"channelIndex"]);
     
@@ -42,13 +65,22 @@
     
     
     NSLog(@"%@", [pageViewController.view subviews][0]);
+    
+    NSLog(@"=====>%@", _pageScrollView);
+    
+    /// KVO 监听滚动视图
+    [_pageScrollView addObserver:self forKeyPath:@"contentOffset" options:0 context:NULL];
 
 }
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<WYNewsListViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     
     NSLog(@"前一个控制器数组 %@", [previousViewControllers valueForKey:@"channelIndex"]);
+    ///用观察者监听只有两种方式,一种是KVO,用的很少,因为它只有一个目的,监听某个对象的某个特殊属性的变化 ,在监听WebView时,因为整个页面的大小不知道,监听的是 contentOffsize的高度
+    /// 注销滚动视图的观察者,一旦注销观察者,后续分页控制器导致的 contentOffset 不再监听
+    //保证监听的变化就是一个完整屏的数值变化
+    [_pageScrollView removeObserver:self forKeyPath:@"contentOffset"];
     
 
 }
@@ -134,6 +166,12 @@
     pc.dataSource = self;
     
     pc.delegate = self;
+    
+    _pageViewController = pc;
+    
+    if ([pc.view .subviews[0] isKindOfClass:[UIScrollView class]]) {
+        _pageScrollView = pc.view.subviews[0];
+    }
     
 
 }
