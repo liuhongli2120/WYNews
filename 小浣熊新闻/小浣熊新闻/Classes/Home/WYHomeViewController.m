@@ -146,6 +146,31 @@
 - (void)didSelectedIndex:(WYChannelView *)cv {
     
     NSLog(@"选中的标签:%zd", cv.selectedIndex);
+    
+    NSInteger idx = cv.selectedIndex;
+    
+    if (_currentListVC.channelIndex == idx) {
+        NSLog(@"不做什么");
+        return;
+    }
+    
+    
+    [_channelView changeLabelWithIndex:idx scale:1];
+    
+    [_channelView changeLabelWithIndex:_currentListVC.channelIndex scale:0];
+    
+    //设置列表控制器
+    WYNewsListViewController *vc = [[WYNewsListViewController alloc]initWithChannelId:_channelList[idx].tid index:idx];
+    
+    NSInteger dir = UIPageViewControllerNavigationDirectionForward;
+    
+    if (idx < _currentListVC.channelIndex) {
+        dir = UIPageViewControllerNavigationDirectionReverse; 
+    }
+    
+    [_pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
+    _currentListVC = vc;
 
 }
 
