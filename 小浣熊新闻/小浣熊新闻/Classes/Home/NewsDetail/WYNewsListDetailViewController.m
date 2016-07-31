@@ -37,9 +37,20 @@
 - (void)loadData {
     // block 里面的东西暂时不会执行, 这个会调用网络工具,网络工具执行之后再进行完成回调,就会调用到这个方法
     [[HLNetworkManager sharedManager] newsListDetailWithDocId:_item.docid completion:^(NSDictionary *dict, NSError *error) {
+        
+        NSString *body = dict[@"body"];
+        NSArray *img = dict[@"img"];
+        NSArray *video = dict[@"video"];
+        
+        NSLog(@"%@", body);
+        NSLog(@"%@", img);
+        NSLog(@"%@", video);
+        
+        [self.webView loadHTMLString:body baseURL:nil]; 
+        
         NSLog(@"%@", dict);
     }];
-
+ 
 }
 
 
